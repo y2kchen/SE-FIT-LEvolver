@@ -1,0 +1,15 @@
+﻿Build started 5/6/2014 6:03:51 PM.
+     1>Project "C:\levolver\yonkang-sefit\levolver\zlib-1.2.8\win64\ZERO_CHECK.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       CustomBuild:
+         Checking Build System
+         CMake does not need to re-run because C:/levolver/yonkang-sefit/levolver/zlib-1.2.8/win64/CMakeFiles/generate.stamp is up-to-date.
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild".
+         Touching "x64\Release\ZERO_CHECK\ZERO_CHECK.lastbuildstate".
+     1>Done Building Project "C:\levolver\yonkang-sefit\levolver\zlib-1.2.8\win64\ZERO_CHECK.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.08
