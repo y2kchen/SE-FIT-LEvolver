@@ -17,6 +17,40 @@
     pointer to memory, so users may swap row pointers freely.
 */
 
+/*
+	Memory Management: The file includes custom memory allocation routines for matrices, assuming the entire matrix can be allocated in one call to calloc.
+Key Functions
+1.	Matrix Allocation and Deallocation
+	kb_dmatrix(): Allocates a zeroed 2D matrix.
+	kb_dmatrix3(): Allocates a zeroed 3D matrix.
+	kb_dmatrix4(): Allocates a zeroed 4D matrix.
+	kb_temp_dmatrix(), kb_temp_dmatrix3(), kb_temp_dmatrix4(): Similar to the above but for temporary memory.
+	perm_matrix2(): Allocates a 2D matrix in permanent memory.
+	free_matrix(), free_matrix3(), free_matrix4(): Deallocates 2D, 3D, and 4D matrices respectively.
+	free_temp_matrix(), free_temp_matrix3(), free_temp_matrix4(): Deallocates temporary matrices.
+2.	Matrix Operations
+	matcopy(): Copies one matrix to another.
+	matvec_mul(): Multiplies a matrix by a vector.
+	vector_add(), vector_add_smul(), vector_sub(): Vector addition, scalar multiplication, and subtraction.
+	vnormal(): Computes the cross product of sides given three points.
+	cross_prod(): Computes the 3D cross product of two vectors.
+	triple_prod(): Computes the scalar triple product in 3D.
+	dot(), dotdf(), dotf(): Computes dot products for various types of vectors.
+3.	Matrix Setup
+	mat2d_setup(), mat3d_setup(), mat4d_setup(): Initializes matrices declared as local variables using macros.
+4.	Vector Operations
+	ivector(): Allocates an integer vector.
+	free_ivector(): Deallocates an integer vector.
+5.	Reordering
+	matrix3_reorder(): Reorders data of a 3D matrix into canonical order and frees the old matrix.
+Memory Debugging
+	The file includes conditional compilation for memory debugging (MEMSTRINGS), which logs memory allocation details.
+BLAS Integration
+	Contains prototypes for BLAS (Basic Linear Algebra Subprograms) functions if BLAS is defined.
+Summary
+The matrix.c file provides a comprehensive set of functions for matrix and vector operations, including allocation, deallocation, and various mathematical operations. It is designed to handle matrices in different dimensions and includes support for both permanent and temporary memory management.
+*/
+
 #include "include.h"
 
 #ifdef BLAS

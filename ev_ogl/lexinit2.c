@@ -12,6 +12,35 @@
 *
 */
 
+/* 
+1.	torus_period_init():
+	Initializes torus period arrays if they are not already set.
+	Allocates memory for web.torus_period, web.inverse_periods, and web.inverse_periods_tr.
+	Sets default values and calls global setup functions.
+2.	torus_display_period_init():
+	Similar to torus_period_init(), but for display periods.
+	Initializes web.torus_display_period and web.inverse_display_periods.
+3.	read_periods():
+	Reads torus periods from input.
+	Initializes torus periods and reads expressions for each period.
+	Calls calc_periods() to adjust volumes.
+4.	read_display_periods():
+	Reads display periods from input.
+	Similar to read_periods(), but for display periods.
+5.	read_parameter():
+	Reads a single parameter from input.
+	Handles different types of parameters, including constants and file-based values.
+	Sets various attributes and flags for the parameter.
+6.	read_boundary():
+	Reads and parses information for a free boundary specification.
+	Handles boundary numbers, names, and parameters.
+	Reads coordinate functions and various integrands for the boundary.
+General Purpose:
+The file is focused on initializing and reading various configurations related to torus periods, display periods, 
+parameters, and boundaries. It ensures that the necessary data structures are set up and populated with the 
+correct values from input sources.
+
+*/
 #include "include.h"
 #include "lex.h"
 #include "ytab.h"

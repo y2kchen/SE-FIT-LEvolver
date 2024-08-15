@@ -10,6 +10,42 @@
 *  Contents:  Functions dealing with boundary constraints.
 */ 
 
+/*
+1.	constraint_init(struct constraint *con):
+	Purpose: Allocates expnode structures for a constraint.
+	Details: Initializes the formula, envect, and convect arrays within the constraint structure.
+2.	constraint_free(struct constraint *con):
+	Purpose: Frees expnode structures and expressions for a constraint.
+	Details: Iterates through the envect and convect arrays to free their associated expressions and then frees the formula.
+3.	constr_proj(...):
+	Purpose: Projects a point or vector onto level-set constraints.
+	Details: Calculates gradients, constructs a matrix for projection, and returns the number of hit constraints.
+4.	constr_proj_matrix(vertex_id v_id, REAL **mat):
+	Purpose: Finds the matrix for projection onto constraint tangents.
+	Details: Calculates gradients, orthonormalizes them, and forms the projection matrix.
+5.	constr_proj_matrix_wall(vertex_id v_id, REAL **mat):
+	Purpose: Similar to constr_proj_matrix but ignores non-wall constraints.
+	Details: Filters out non-wall constraints before calculating the projection matrix.
+6.	project_v_constr(vertex_id v_id, int mode, int one_sided_reset):
+	Purpose: Projects a vertex onto its constraints.
+	Details: Iteratively adjusts the vertex coordinates to satisfy constraints, handling one-sided constraints and convergence issues.
+7.	calc_constr_force_v(vertex_id v_id):
+	Purpose: Calculates the force on a vertex due to constraint energy.
+	Details: Evaluates constraint expressions and updates the force vector for the vertex.
+8.	calc_constr_force_e(edge_id e_id):
+	Purpose: Calculates the force on the endpoints of an edge due to constraint energy.
+	Details: Evaluates constraint expressions at Gaussian quadrature points along the edge and updates the force vectors for the endpoints.
+9.	calc_constr_energy_v(vertex_id v_id):
+	Purpose: Calculates the constraint energy due to a vertex.
+	Details: Evaluates the constraint energy and adds it to the total energy.
+10.	calc_constr_energy_e(edge_id e_id):
+	Purpose: Calculates the energy due to an edge on a constraint.
+	Details: Evaluates constraint energy at Gaussian quadrature points along the edge and adds it to the total energy.
+These functions collectively manage the initialization, projection, force calculation, and energy calculation related to constraints in the Surface Evolver.
+
+
+*/
+
 #include "include.h"
 
 /*******************************************************************

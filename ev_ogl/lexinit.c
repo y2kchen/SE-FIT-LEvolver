@@ -12,6 +12,19 @@
 *      lexical analyzer version, using lex defs in datafile.lex
 */
 
+/* 
+The lexinit.c file is part of the Surface Evolver source code, written by Ken Brakke. Its primary purpose is to read ASCII initial data files using a lexical analyzer defined in datafile.lex. The file includes two main functions:
+1.	reset_web():
+	This function zeroes out and initializes various web storage structures.
+	It unloads dynamic libraries, resets flags, clears memory, and initializes various attributes and parameters related to the web structure.
+	It also handles memory allocation and resets global variables and settings to their default states.
+2.	initialize():
+	This function reads in a data file and creates the initial triangulation.
+	It resets the lexical analyzer and parser, initializes various lists and flags, and processes header information from the data file.
+	It predicts the number of elements (vertices, edges, facets, bodies, etc.) and handles various tokens related to the data file's structure.
+The file includes numerous global variables and macros, and it interacts with other parts of the Surface Evolver system to set up the initial state for further processing.
+*/
+
 #include "include.h"
 #include "lex.h"
 #include "ytab.h"

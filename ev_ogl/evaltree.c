@@ -14,6 +14,42 @@
 *    
 */
 
+/*
+1.	Breakpoints and Debugging
+	Breakpoints: Supports setting and unsetting breakpoints in the code.
+	Debugging: Includes mechanisms for single-step debugging and handling breakpoints during execution.
+2.	Profiling
+	Profiling Macros: Conditional compilation for profiling evaluation functions, including macros for starting and stopping profiling.
+3.	Evaluation Function
+	eval(): The main function for runtime evaluation of expressions and commands. It uses a local evaluation stack to support parallel evaluations on shared memory machines.
+	Stack Management: Manages a stack for evaluation, including setting up frames for function calls and handling local variables.
+4.	Node Types
+	SETUP_FRAME_NODE: Initializes a new frame for a procedure.
+	ABORT_NODE: Handles aborting execution.
+	SUBCOMMAND_NODE: Executes subcommands in a new subshell.
+	SET_BREAKPOINT_NODE: Sets a breakpoint at a specified line.
+	UNSET_BREAKPOINT_NODE: Unsets a previously set breakpoint.
+	DETORUS_NODE: Calls detorus() and recalc().
+	WHEREAMI_COMMAND_NODE: Provides debugging information about the current execution point.
+	FREE_DISCARDS_NODE: Frees discarded elements.
+	SINGLE_LETTER_NODE: Executes single-letter commands, with special handling for debugging.
+	LINEAR_NODE, QUADRATIC_NODE, LAGRANGE_NODE: Changes the model type of the surface.
+	ELINDEX_NODE: Creates a typeless valid element ID.
+	PUSH_ELEMENT_ID_NODE: Pushes an element ID onto the stack.
+	VALID_ELEMENT_NODE: Checks if an element ID is valid.
+	VALID_CONSTRAINT_NODE: Checks if a constraint is valid.
+	VALID_BOUNDARY_NODE: Checks if a boundary is valid.
+	LOAD_NODE: Loads a new data file.
+	ADDLOAD_NODE: Adds and loads a new data file.
+	REPLACE_LOAD_NODE: Replaces the current data file with a new one.
+    ...
+Summary
+The evaltree.c file provides the core functionality for evaluating and executing expression and command trees in
+the Surface Evolver. It includes support for debugging, profiling, and managing the evaluation stack. The file 
+handles various node types that represent different commands and expressions, ensuring efficient and correct
+execution of the surface evolution process.
+*/
+
 #include "include.h" 
 #include "ytab.h"
  

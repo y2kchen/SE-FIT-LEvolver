@@ -21,6 +21,32 @@ int volgrads_changed_flag; /* whether volgrads recalced during move */
 *  Purpose:  calculate and make one move of vertices
 */
 
+/*
+1.	Global Variables:
+	volgrads_changed_flag: Indicates if volume gradients were recalculated during the move.
+2.	Main Function: iterate():
+	Purpose: Perform one iteration of vertex movement to minimize energy.
+	Key Steps:
+	Check if there are vertices to move.
+	Handle diffusion if enabled.
+	Calculate initial energy and gradients.
+	Save current coordinates in case of errors.
+	Perform a series of moves to find the optimal scale that minimizes energy.
+	Use quadratic interpolation to refine the scale.
+	Apply the final move with the calculated scale.
+	Handle various flags and conditions like jiggling, autopop, and constraints.
+	Restore coordinates if the move results in infinite energy or increased energy.
+	Update the display and handle any errors.
+3.	Supporting Functions:
+	calc_all_grads(int mode): Recalculates forces and constraint gradients.
+	burchard(int maxsteps): Implements a scheme to accelerate motion by ramping the scale factor.
+	fix_vertices(): Fixes vertices by zeroing out force and projecting force to be tangent to boundaries and constraints.
+	move_vertices(int mode, REAL scale): Handles the movement of vertices, possibly invoking MPI functions.
+	local_move_vertices(int mode, REAL scale): Moves all unfixed vertices by the current scale factor and force.
+	project_all(int mode, int mode2): Projects vertices to all constraints and boundaries after moving.
+The file contains detailed logic for handling vertex movement, energy minimization, and various conditions and flags that affect the movement process.
+
+*/
 void iterate()
 {
   REAL energy0,energy1,energy2=0.0;
