@@ -28,6 +28,8 @@ The file includes numerous global variables and macros, and it interacts with ot
 #include "include.h"
 #include "lex.h"
 #include "ytab.h"
+#include <math.h> /* Y Chen 8/16/2024 */
+
 #define yylex() kb_yylex(NULL)
 
 /***********************************************************
@@ -3858,3 +3860,54 @@ void read_bodies()
 
 } /* end read_bodies() */
 
+/************************************************************************
+*
+*  Function: 
+*
+*  Y Chen 8/16/2024
+*  
+*  Purpose: funtions for setting up a spatial grid for 3D elements.
+*/
+
+
+// Assuming the element structure has x and y coordinates
+// struct element {
+//    double x, y;
+//    // Other fields...
+//};
+
+// Function to calculate the bounding box of the domain
+void calculate_bounding_box(struct element** elements, int num_elements, double* min_x, double* max_x, double* min_y, double* max_y, double* min_z, double* max_z) {
+    *min_x = *max_x = elements[0]->x;
+    *min_y = *max_y = elements[0]->y;
+    for (int i = 1; i < num_elements; i++) {
+        if (elements[i]->x < *min_x) *min_x = elements[i]->x;
+        if (elements[i]->x > *max_x) *max_x = elements[i]->x;
+        if (elements[i]->y < *min_y) *min_y = elements[i]->y;
+        if (elements[i]->y > *max_y) *max_y = elements[i]->y;
+    }
+}
+
+// Function to determine the grid size
+//int determine_grid_size(struct element** elements, int num_elements, int desired_elements_per_cell) {
+//    double min_x, max_x, min_y, max_y;
+//    calculate_bounding_box(elements, num_elements, &min_x, &max_x, &min_y, &max_y);
+//
+//    double domain_width = max_x - min_x;
+//    double domain_height = max_y - min_y;
+//
+//    int num_cells = (int)ceil((double)num_elements / desired_elements_per_cell);
+//    int grid_size_x = (int)ceil(domain_width / sqrt(num_cells));
+//    int grid_size_y = (int)ceil(domain_height / sqrt(num_cells));
+//
+//    return fmax(grid_size_x, grid_size_y); // Use the larger of the two to ensure square cells
+//}
+
+// Function to initialize the spatial grid
+//void initialize_spatial_grid(int grid_size) {
+//    spatial_grid.grid_size = grid_size;
+//    spatial_grid.grid_cells = (struct element***)calloc(grid_size, sizeof(struct element**));
+//    for (int i = 0; i < grid_size; i++) {
+//        spatial_grid.grid_cells[i] = (struct element**)calloc(grid_size, sizeof(struct element*));
+//    }
+//}

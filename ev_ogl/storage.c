@@ -14,6 +14,27 @@
 *                
 *        This version has element ids implemented as longs.
 */
+
+/*
+This file specifically deals with the storage and management of various elements (vertices, edges, facets, bodies, etc.) in the program. Let's break down the key components and functions in the provided code:
+Key Structures and Variables
+1.	blocklist: An array of pointers to blocklist_struct, which keeps track of allocated memory blocks for different element types (vertices, edges, facets, etc.).
+2.	blockcount and blockmax: Arrays that keep track of the number of allocated blocks and the maximum length of the block list for each element type.
+3.	sparse_ibase_flag: A flag indicating whether sparse indexing is used for element storage.
+4.	vibase, eibase, fibase, bibase, feibase: Pointers to indirect block pointer arrays for different element types, useful for debugging.
+5.	elements_predicted: An array for predicting storage needs based on the data file.
+6.	web: The main structure representing the web, which includes various elements and their properties.
+7.	NULLVERTEX, NULLEDGE, NULLFACET, NULLBODY, NULLFACETEDGE: Constants representing null IDs for different element types.
+Key Functions
+1.	elptr: A function to get a pointer to an element based on its ID. It handles different element types and, in the case of MPI (Message Passing Interface), remote elements.
+2.	oid: A function to get the ordinal ID of an element, considering whether the ID is inverted.
+3.	Vptr, Eptr, Fptr, Bptr, Feptr: Functions to get pointers to specific element types (vertex, edge, facet, body, facetedge) based on their IDs.
+4.	expand: A function to increase or decrease the size of element structures. It reallocates memory for elements and updates pointers accordingly. 
+    This function is crucial for managing memory efficiently as the web evolves.
+5.	extend: A function to allocate more empty element structures. It handles different modes of extension, such as batch extension or extension for refinement. 
+    This function ensures that there is enough memory allocated for new elements as they are created.
+
+*/
 #include "include.h"
 
 struct blocklist_struct *blocklist[NUMELEMENTS]; /* list of allocated blocks */

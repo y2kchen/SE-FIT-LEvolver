@@ -246,3 +246,15 @@ extern INDIRECT_TYPE *feibase;
 
 /* for getting id1 with orientation sign of id2 */
 #define copy_sign(id1,id2)     (((id1)&~SIGNMASK) | ((id2) & SIGNMASK))
+
+/***********************************
+for setting up a spatial grid 
+y Chen 8/16/2024 
+************************************/
+
+typedef struct {
+    int grid_size;
+    struct element*** grid_cells;
+} spatial_grid_t;
+
+spatial_grid_t spatial_grid;
