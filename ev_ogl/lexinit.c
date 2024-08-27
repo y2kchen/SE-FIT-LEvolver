@@ -3877,39 +3877,39 @@ void read_bodies()
 //};
 
 // Function to calculate the bounding box of the domain
-void calculate_bounding_box(struct element** elements, int num_elements, double* min_x, double* max_x, double* min_y, double* max_y, double* min_z, double* max_z) {
-    *min_x = *max_x = elements[0]->x;
-    *min_y = *max_y = elements[0]->y;
-    *min_z = *max_z = elements[0]->z;
-
-    for (int i = 1; i < num_elements; i++) {
-        if (elements[i]->x < *min_x) *min_x = elements[i]->x;
-        if (elements[i]->x > *max_x) *max_x = elements[i]->x;
-        if (elements[i]->y < *min_y) *min_y = elements[i]->y;
-        if (elements[i]->y > *max_y) *max_y = elements[i]->y;
-        if (elements[i]->z < *min_z) *min_z = elements[i]->z;
-        if (elements[i]->z > *max_z) *max_z = elements[i]->z;
-    }
-}
+//void calculate_bounding_box(struct element** elements, int num_elements, double* min_x, double* max_x, double* min_y, double* max_y, double* min_z, double* max_z) {
+//    *min_x = *max_x = elements[0]->x;
+//    *min_y = *max_y = elements[0]->y;
+//    *min_z = *max_z = elements[0]->z;
+//
+//    for (int i = 1; i < num_elements; i++) {
+//        if (elements[i]->x < *min_x) *min_x = elements[i]->x;
+//        if (elements[i]->x > *max_x) *max_x = elements[i]->x;
+//        if (elements[i]->y < *min_y) *min_y = elements[i]->y;
+//        if (elements[i]->y > *max_y) *max_y = elements[i]->y;
+//        if (elements[i]->z < *min_z) *min_z = elements[i]->z;
+//        if (elements[i]->z > *max_z) *max_z = elements[i]->z;
+//    }
+//}
 
 // Function to determine the grid size
 // the openGL window has a function to draw the bounding box of the domain.
 
- int determine_grid_size(struct element** elements, int num_elements, int desired_elements_per_cell) {
-    double min_x, max_x, min_y, max_y, min_z, max_z;
-    calculate_bounding_box(elements, num_elements, &min_x, &max_x, &min_y, &max_y, &min_z, &max_z);
+ //int determine_grid_size(struct element** elements, int num_elements, int desired_elements_per_cell) {
+ //   double min_x, max_x, min_y, max_y, min_z, max_z;
+ //   calculate_bounding_box(elements, num_elements, &min_x, &max_x, &min_y, &max_y, &min_z, &max_z);
 
-    double domain_length = max_x - min_x;
-    double domain_width = max_y - min_y;
-    double domain_height = max_z - min_z;
+ //   double domain_length = max_x - min_x;
+ //   double domain_width = max_y - min_y;
+ //   double domain_height = max_z - min_z;
 
 
-    int num_cells = (int)ceil((double)num_elements / desired_elements_per_cell);
-    int grid_size_x = (int)ceil(domain_width / sqrt(num_cells));
-    int grid_size_y = (int)ceil(domain_height / sqrt(num_cells));
+ //   int num_cells = (int)ceil((double)num_elements / desired_elements_per_cell);
+ //   int grid_size_x = (int)ceil(domain_width / sqrt(num_cells));
+ //   int grid_size_y = (int)ceil(domain_height / sqrt(num_cells));
 
-    return fmax(grid_size_x, grid_size_y); // Use the larger of the two to ensure square cells
- }
+ //   return fmax(grid_size_x, grid_size_y); // Use the larger of the two to ensure square cells
+ //}
 
 // Function to initialize the spatial grid
 //void initialize_spatial_grid(int grid_size) {

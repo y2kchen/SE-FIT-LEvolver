@@ -1,2 +1,5 @@
 
 /.vs
+/ev_ogl/x64
+/ev_ogl/Release
+/ev_ogl/Debug
